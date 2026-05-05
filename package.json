@@ -1,8 +1,13 @@
 {
   "name": "exam-backend",
   "version": "1.0.0",
+  "description": "Smart Exam Hall Backend",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.10.1",
+    "mqtt": "^4.3.7"
   }
-} 
+}
