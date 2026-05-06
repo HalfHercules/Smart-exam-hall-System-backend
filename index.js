@@ -1,6 +1,17 @@
 const mqtt = require("mqtt");
 const admin = require("firebase-admin");
  
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
+
+app.listen(3000, () => {
+  console.log("🌐 HTTP server running on port 3000");
+});
+
 // ================= FIREBASE =================
 const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
  
