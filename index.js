@@ -4,12 +4,25 @@ const admin = require("firebase-admin");
 const express = require("express");
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
+// Main route
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
-app.listen(3000, () => {
-  console.log("🌐 HTTP server running on port 3000");
+// Keep-alive route
+app.get("/ping", (req, res) => {
+  res.status(200).json({
+    status: "alive",
+    mqtt: client.connected,
+    time: new Date()
+  });
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🌐 HTTP server running on port ${PORT}`);
 });
 
 // ================= FIREBASE =================
