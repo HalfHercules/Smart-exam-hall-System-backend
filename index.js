@@ -52,7 +52,17 @@ client.on("connect", () => {
   console.log("✅ MQTT Connected");
   client.subscribe(scanTopic);
 });
- 
+ client.on("reconnect", () => {
+  console.log("🔄 MQTT reconnecting...");
+});
+
+client.on("offline", () => {
+  console.log("⚠️ MQTT offline");
+});
+
+client.on("error", (err) => {
+  console.log("🔥 MQTT error:", err.message);
+});
 // ================= MESSAGE =================
 client.on("message", async (topic, message) => {
  
